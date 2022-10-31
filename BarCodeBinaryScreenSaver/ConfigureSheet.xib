@@ -10,6 +10,8 @@
             <connections>
                 <outlet property="dateFormatField" destination="urt-95-TOG" id="1l8-EO-UIa"/>
                 <outlet property="mirrorBox" destination="bD2-En-5we" id="5ab-MJ-f1W"/>
+                <outlet property="nImageView" destination="wKI-TR-Af1" id="oyL-dd-tuG"/>
+                <outlet property="pImageView" destination="itE-TK-vn6" id="hHJ-GC-Vrw"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="t14-la-H7W"/>
             </connections>
         </customObject>
@@ -18,14 +20,22 @@
         <window title="Bar Code Binary" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="240" height="163"/>
+            <rect key="contentRect" x="196" y="240" width="240" height="247"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="240" height="163"/>
+                <rect key="frame" x="0.0" y="0.0" width="240" height="247"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="I5R-9Z-qyp">
+                        <rect key="frame" x="18" y="211" width="177" height="16"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" title="Show current date in format:" id="amc-Cb-ihR">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="urt-95-TOG">
-                        <rect key="frame" x="20" y="98" width="200" height="21"/>
+                        <rect key="frame" x="20" y="182" width="200" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="200" id="PBC-bW-2Az"/>
                         </constraints>
@@ -36,7 +46,7 @@
                         </textFieldCell>
                     </textField>
                     <button verticalHuggingPriority="750" id="bD2-En-5we">
-                        <rect key="frame" x="18" y="61" width="160" height="18"/>
+                        <rect key="frame" x="18" y="145" width="160" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Mirror the whole thing" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="9Qp-56-mYO">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -75,14 +85,49 @@ Gw
                             <action selector="cancelAndCloseSheet:" target="-2" id="4L0-la-oQE"/>
                         </connections>
                     </button>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="I5R-9Z-qyp">
-                        <rect key="frame" x="18" y="127" width="177" height="16"/>
-                        <textFieldCell key="cell" lineBreakMode="clipping" title="Show current date in format:" id="amc-Cb-ihR">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q4Y-FE-8pI">
+                        <rect key="frame" x="22" y="115" width="177" height="16"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" title="Positive and negative image:" id="jnr-Ok-i4l">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="itE-TK-vn6" userLabel="Positive Image">
+                        <rect key="frame" x="48" y="66" width="48" height="48"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="Ode-A0-WQV"/>
+                        <color key="contentTintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </imageView>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Apd-Q9-pTg">
+                        <rect key="frame" x="17" y="39" width="101" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Select new" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dnR-9T-zZt">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <connections>
+                                <action selector="selectPImage:" target="-2" id="3D5-w1-iHz"/>
+                            </connections>
+                        </buttonCell>
+                    </button>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wKI-TR-Af1" userLabel="Negative Image">
+                        <rect key="frame" x="142" y="66" width="48" height="48"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="wx7-66-rpR"/>
+                        <color key="contentTintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </imageView>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Yy-69-jo9">
+                        <rect key="frame" x="116" y="39" width="101" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Select new" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="t44-Sr-opX">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="selectNImage:" target="-2" id="Wpc-cc-j4c"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="I5R-9Z-qyp" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" symbolic="YES" id="Fis-Dt-5ZS"/>
@@ -97,7 +142,7 @@ Gw
                     <constraint firstItem="lsB-4d-KwF" firstAttribute="leading" secondItem="7Xs-fG-lKy" secondAttribute="trailing" constant="12" symbolic="YES" id="pnd-TJ-XP3"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="452" y="503.5"/>
+            <point key="canvasLocation" x="452" y="545.5"/>
         </window>
     </objects>
 </document>

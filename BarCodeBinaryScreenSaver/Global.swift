@@ -10,3 +10,6 @@ import Foundation
 
 
 var leadingText = "©Victor Apeland"
+let defaultPImagePath = URL(fileURLWithPath: "/System/Library/Desktop Pictures/Motion Purple.heic")
+let defaultNImagePath = URL(fileURLWithPath: "/System/Library/Desktop Pictures/Motion Yellow.heic")
+

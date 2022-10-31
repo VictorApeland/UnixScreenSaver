@@ -38,8 +38,7 @@ final class SaverView: ScreenSaverView {
 	
 	// MARK: Initialization
 	override init?(frame: NSRect, isPreview: Bool) {
-		
-//		defaults = ScreenSaverDefaults.init(forModuleWithName: "com.VictorApeland.BarCodeBinary")
+//		defaults = ScreenSaverDefaults.init(forModuleWithName: Bundle(for: SaverView.self).bundleIdentifier!)
 		defaults = UserDefaults.standard
 		dateFormatter = DateFormatter()
 		dateFormatter.dateFormat = defaults?.string(forKey: "dateFormat") ?? ""
@@ -52,16 +51,17 @@ final class SaverView: ScreenSaverView {
 		
 		initColorViews()
 		
-		let url = URL(fileURLWithPath: "/Users/victorapeland/Pictures/SSImages/", isDirectory: true, relativeTo: nil)
+		let pImagePath = defaults?.url(forKey: "pImagePath") ?? defaultPImagePath
+		let nImagePath = defaults?.url(forKey: "nImagePath") ?? defaultNImagePath
 		
-		URLSession.shared.dataTask(with: URL(fileURLWithPath: "p.jpg", relativeTo: url), completionHandler: { data, response, error in
+		URLSession.shared.dataTask(with: pImagePath, completionHandler: { data, _, error in
 			guard let data = data, error == nil else { return }
 			DispatchQueue.main.async() { [weak self] in
 				self?.pImage = NSImage(data: data)!
 			}
 		}).resume()
 		
-		URLSession.shared.dataTask(with: URL(fileURLWithPath: "n.jpg", relativeTo: url), completionHandler: { data, response, error in
+		URLSession.shared.dataTask(with: nImagePath, completionHandler: { data, _, error in
 			guard let data = data, error == nil else { return }
 			DispatchQueue.main.async() { [weak self] in
 				self?.nImage = NSImage(data: data)!
@@ -70,7 +70,6 @@ final class SaverView: ScreenSaverView {
 	}
 	
 	func initColorViews() {
-//		leadingText = String(describing: defaults?.bool(forKey: "ShowMinute"))
 		let characters = Array(leadingText) + [Character](repeating: " ", count: digitCount - leadingText.count)
 		let width = frame.width / CGFloat(digitCount)
 		for i in 0..<digitCount {
