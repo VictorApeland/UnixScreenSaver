@@ -24,7 +24,7 @@ final class SaverView: ScreenSaverView {
 	var digitCount = 32
 	var mirror: Bool
 	
-	let defaults: ScreenSaverDefaults?
+	let defaults: UserDefaults?
 	
 	var digitColorViews: [DigitColorView] = []
 	
@@ -42,15 +42,16 @@ final class SaverView: ScreenSaverView {
 	// MARK: Initialization
 	override init?(frame: NSRect, isPreview: Bool) {
 		
-		defaults = ScreenSaverDefaults.init(forModuleWithName: "com.VictorApeland.BarCodeBinary")
-		showYear = defaults?.bool(forKey: "ShowYear") ?? true
-		showMonth = defaults?.bool(forKey: "ShowMonth") ?? true
-		showDay = defaults?.bool(forKey: "ShowDay") ?? false
-		showWeek = defaults?.bool(forKey: "ShowWeek") ?? false
-		showHour = defaults?.bool(forKey: "ShowHour") ?? true
-		showMinute = defaults?.bool(forKey: "ShowMinute") ?? true
-		showSecond = defaults?.bool(forKey: "ShowSecond") ?? true
-		mirror = defaults?.bool(forKey: "Mirror") ?? true
+//		defaults = ScreenSaverDefaults.init(forModuleWithName: "com.VictorApeland.BarCodeBinary")
+		defaults = UserDefaults.standard
+		showYear = defaults?.bool(forKey: "showYear") ?? true
+		showMonth = defaults?.bool(forKey: "showMonth") ?? true
+		showDay = defaults?.bool(forKey: "showDay") ?? false
+		showWeek = defaults?.bool(forKey: "showWeek") ?? false
+		showHour = defaults?.bool(forKey: "showHour") ?? true
+		showMinute = defaults?.bool(forKey: "showMinute") ?? true
+		showSecond = defaults?.bool(forKey: "showSecond") ?? true
+		mirror = defaults?.bool(forKey: "mirror") ?? true
 		
 		super.init(frame: frame, isPreview: isPreview)
 		
@@ -76,6 +77,7 @@ final class SaverView: ScreenSaverView {
 	}
 	
 	func initColorViews() {
+//		leadingText = String(describing: defaults?.bool(forKey: "ShowMinute"))
 		let characters = Array(leadingText) + [Character](repeating: " ", count: digitCount - leadingText.count)
 		let width = frame.width / CGFloat(digitCount)
 		for i in 0..<digitCount {
@@ -87,15 +89,15 @@ final class SaverView: ScreenSaverView {
 	}
 	
 	required init?(coder decoder: NSCoder) {
-		defaults = ScreenSaverDefaults.init(forModuleWithName: "com.VictorApeland.BarCodeBinary")
-		showYear = defaults?.bool(forKey: "ShowYear") ?? true
-		showMonth = defaults?.bool(forKey: "ShowMonth") ?? true
-		showDay = defaults?.bool(forKey: "ShowDay") ?? false
-		showWeek = defaults?.bool(forKey: "ShowWeek") ?? false
-		showHour = defaults?.bool(forKey: "ShowHour") ?? true
-		showMinute = defaults?.bool(forKey: "ShowMinute") ?? true
-		showSecond = defaults?.bool(forKey: "ShowSecond") ?? true
-		mirror = defaults?.bool(forKey: "Mirror") ?? true
+		defaults = UserDefaults.standard
+		showYear = defaults?.bool(forKey: "showYear") ?? true
+		showMonth = defaults?.bool(forKey: "showMonth") ?? true
+		showDay = defaults?.bool(forKey: "showDay") ?? false
+		showWeek = defaults?.bool(forKey: "showWeek") ?? false
+		showHour = defaults?.bool(forKey: "showHour") ?? true
+		showMinute = defaults?.bool(forKey: "showMinute") ?? true
+		showSecond = defaults?.bool(forKey: "showSecond") ?? true
+		mirror = defaults?.bool(forKey: "mirror") ?? true
 		super.init(coder: decoder)
 	}
 	
@@ -135,7 +137,7 @@ final class SaverView: ScreenSaverView {
 		let date = Date()
 		let calendar = Calendar.current
 		let comp = {(_ component: Calendar.Component) in return calendar.component(component, from: date)}
-		var trailingText: [Character] = (showDay ? [" "] : []) + (showWeek ? [" "] : []) + (showHour ? [" "] : [])
+		var trailingText: [Character] = [" "]
 		
 		if showYear   { trailingText += chars(comp(.year))   + "."}
 		if showMonth  { trailingText += chars(comp(.month))  + "."}

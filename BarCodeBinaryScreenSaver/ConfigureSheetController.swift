@@ -31,18 +31,19 @@ class ConfigureSheetController : NSObject {
 	var showSecond: Bool
 	var digitCount = 32
 	var mirror: Bool
-	let defaults: ScreenSaverDefaults?
+	let defaults: UserDefaults?
 	
 	override init() {
-		defaults = ScreenSaverDefaults.init(forModuleWithName: "com.VictorApeland.BarCodeBinary")
-		showYear = defaults?.bool(forKey: "ShowYear") ?? true
-		showMonth = defaults?.bool(forKey: "ShowMonth") ?? true
-		showDay = defaults?.bool(forKey: "ShowDay") ?? false
-		showWeek = defaults?.bool(forKey: "ShowWeek") ?? false
-		showHour = defaults?.bool(forKey: "ShowHour") ?? true
-		showMinute = defaults?.bool(forKey: "ShowMinute") ?? true
-		showSecond = defaults?.bool(forKey: "ShowSecond") ?? true
-		mirror = defaults?.bool(forKey: "Mirror") ?? true
+//		defaults = ScreenSaverDefaults.init(forModuleWithName: "com.VictorApeland.BarCodeBinary")
+		defaults = UserDefaults.standard
+		showYear = defaults?.bool(forKey: "showYear") ?? true
+		showMonth = defaults?.bool(forKey: "showMonth") ?? true
+		showDay = defaults?.bool(forKey: "showDay") ?? false
+		showWeek = defaults?.bool(forKey: "showWeek") ?? false
+		showHour = defaults?.bool(forKey: "showHour") ?? true
+		showMinute = defaults?.bool(forKey: "showMinute") ?? true
+		showSecond = defaults?.bool(forKey: "showSecond") ?? true
+		mirror = defaults?.bool(forKey: "mirror") ?? true
         super.init()
         let myBundle = Bundle(for: ConfigureSheetController.self)
         myBundle.loadNibNamed("ConfigureSheet", owner: self, topLevelObjects: nil)
@@ -72,14 +73,14 @@ class ConfigureSheetController : NSObject {
 		showMonth  =   monthBox.state == .on
 		showYear   =    yearBox.state == .on
 		
-		defaults?.set(     mirror, forKey: "Mirror")
-		defaults?.set( showSecond, forKey: "ShowSecond")
-		defaults?.set( showMinute, forKey: "ShowMinute")
-		defaults?.set(   showHour, forKey: "ShowHour")
-		defaults?.set(    showDay, forKey: "ShowDay")
-		defaults?.set(   showWeek, forKey: "ShowWeek")
-		defaults?.set(  showMonth, forKey: "ShowMonth")
-		defaults?.set(   showYear, forKey: "ShowYear")
+		defaults?.set(     mirror, forKey: "mirror")
+		defaults?.set( showSecond, forKey: "showSecond")
+		defaults?.set( showMinute, forKey: "showMinute")
+		defaults?.set(   showHour, forKey: "showHour")
+		defaults?.set(    showDay, forKey: "showDay")
+		defaults?.set(   showWeek, forKey: "showWeek")
+		defaults?.set(  showMonth, forKey: "showMonth")
+		defaults?.set(   showYear, forKey: "showYear")
 		
 		closeConfigureSheet()
 	}
@@ -105,13 +106,5 @@ class ConfigureSheetController : NSObject {
 
         // Now close the sheet (this works on older macOS versions too)
         window?.sheetParent?.endSheet(window!)
-        
-        // Remember, you are still in memory at this point until you get killed by parent.
-        // If your parent is System Preferences, you will remain in memory as long as System
-        // Preferences is open. Reopening the sheet will just wake you up.
-        //
-        // An unfortunate side effect of this is that if your user updates to a new version with
-        // System Preferences open, they will see weird things (ui from old version running
-        // new code, etc), so tell them not to do that!
     }
 }
