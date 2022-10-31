@@ -13,36 +13,20 @@ class ConfigureSheetController : NSObject {
     
     @IBOutlet var window: NSWindow?
 	
-	@IBOutlet var secondsBox: NSButton!
-	@IBOutlet var minutesBox: NSButton!
-	@IBOutlet var hoursBox: NSButton!
-	@IBOutlet var dayBox: NSButton!
-	@IBOutlet var weekBox: NSButton!
-	@IBOutlet var monthBox: NSButton!
-	@IBOutlet var yearBox: NSButton!
+	@IBOutlet var dateFormatField: NSTextField!
+	
 	@IBOutlet var mirrorBox: NSButton!
 	
-	var showYear: Bool
-	var showMonth: Bool
-	var showWeek: Bool
-	var showDay: Bool
-	var showHour: Bool
-	var showMinute: Bool
-	var showSecond: Bool
 	var digitCount = 32
+	var dateFormat: String
 	var mirror: Bool
 	let defaults: UserDefaults?
 	
 	override init() {
 //		defaults = ScreenSaverDefaults.init(forModuleWithName: "com.VictorApeland.BarCodeBinary")
 		defaults = UserDefaults.standard
-		showYear = defaults?.bool(forKey: "showYear") ?? true
-		showMonth = defaults?.bool(forKey: "showMonth") ?? true
-		showDay = defaults?.bool(forKey: "showDay") ?? false
-		showWeek = defaults?.bool(forKey: "showWeek") ?? false
-		showHour = defaults?.bool(forKey: "showHour") ?? true
-		showMinute = defaults?.bool(forKey: "showMinute") ?? true
-		showSecond = defaults?.bool(forKey: "showSecond") ?? true
+
+		dateFormat = defaults?.string(forKey: "dateFormat") ?? ""
 		mirror = defaults?.bool(forKey: "mirror") ?? true
         super.init()
         let myBundle = Bundle(for: ConfigureSheetController.self)
@@ -51,36 +35,27 @@ class ConfigureSheetController : NSObject {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-		secondsBox.state = showSecond ? .on : .off
-		minutesBox.state = showMinute ? .on : .off
-		hoursBox.state   = showHour   ? .on : .off
-		dayBox.state     = showDay    ? .on : .off
-		weekBox.state    = showWeek   ? .on : .off
-		monthBox.state   = showMonth  ? .on : .off
-		yearBox.state    = showYear   ? .on : .off
-		mirrorBox.state  = mirror     ? .on : .off
+
+		mirrorBox.state = mirror ? .on : .off
+		dateFormatField.stringValue = dateFormat
         
     }
 
 	@IBAction func saveAndCloseSheet(_ sender: AnyObject) {
-		mirror     =  mirrorBox.state == .on
-		showSecond = secondsBox.state == .on
-		showMinute = minutesBox.state == .on
-		showHour   =   hoursBox.state == .on
-		showDay    =     dayBox.state == .on
-		showWeek   =    weekBox.state == .on
-		showMonth  =   monthBox.state == .on
-		showYear   =    yearBox.state == .on
+		// Test that the date format is valid
+		let testFormatter = DateFormatter()
+		testFormatter.dateFormat = dateFormatField.stringValue
+		guard testFormatter.dateFormat == "" || testFormatter.string(from: Date()) != "" else {
+			dateFormatField.layer?.borderColor = NSColor.red.cgColor
+			return
+		}
+		dateFormatField.layer?.borderColor = NSColor.black.cgColor
+		dateFormat = dateFormatField.stringValue
 		
-		defaults?.set(     mirror, forKey: "mirror")
-		defaults?.set( showSecond, forKey: "showSecond")
-		defaults?.set( showMinute, forKey: "showMinute")
-		defaults?.set(   showHour, forKey: "showHour")
-		defaults?.set(    showDay, forKey: "showDay")
-		defaults?.set(   showWeek, forKey: "showWeek")
-		defaults?.set(  showMonth, forKey: "showMonth")
-		defaults?.set(   showYear, forKey: "showYear")
+		mirror =  mirrorBox.state == .on
+		
+		defaults?.set(mirror, forKey: "mirror")
+		defaults?.set(dateFormat, forKey: "dateFormat")
 		
 		closeConfigureSheet()
 	}
@@ -88,14 +63,8 @@ class ConfigureSheetController : NSObject {
 	@IBAction func cancelAndCloseSheet(_ sender: AnyObject) {
 		// Close without saving
 		// Set boxes back to what they are representing
-		secondsBox.state = showSecond ? .on : .off
-		minutesBox.state = showMinute ? .on : .off
-		hoursBox.state   = showHour   ? .on : .off
-		dayBox.state     = showDay    ? .on : .off
-		weekBox.state    = showWeek   ? .on : .off
-		monthBox.state   = showMonth  ? .on : .off
-		yearBox.state    = showYear   ? .on : .off
-		mirrorBox.state  = mirror     ? .on : .off
+		mirrorBox.state = mirror ? .on : .off
+		dateFormatField.stringValue = dateFormat
 		
 		closeConfigureSheet()
 	}

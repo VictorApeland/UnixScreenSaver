@@ -14,15 +14,12 @@ import Cocoa
 // MARK: - SaverView
 final class SaverView: ScreenSaverView {
 	
-	var showYear: Bool
-	var showMonth: Bool
-	var showWeek: Bool
-	var showDay: Bool
-	var showHour: Bool
-	var showMinute: Bool
-	var showSecond: Bool
-	var digitCount = 32
+	var digitCount: Int
 	var mirror: Bool
+	
+	let dateFormatter: DateFormatter
+	
+	lazy var sheetController = ConfigureSheetController()
 	
 	let defaults: UserDefaults?
 	
@@ -44,14 +41,10 @@ final class SaverView: ScreenSaverView {
 		
 //		defaults = ScreenSaverDefaults.init(forModuleWithName: "com.VictorApeland.BarCodeBinary")
 		defaults = UserDefaults.standard
-		showYear = defaults?.bool(forKey: "showYear") ?? true
-		showMonth = defaults?.bool(forKey: "showMonth") ?? true
-		showDay = defaults?.bool(forKey: "showDay") ?? false
-		showWeek = defaults?.bool(forKey: "showWeek") ?? false
-		showHour = defaults?.bool(forKey: "showHour") ?? true
-		showMinute = defaults?.bool(forKey: "showMinute") ?? true
-		showSecond = defaults?.bool(forKey: "showSecond") ?? true
+		dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = defaults?.string(forKey: "dateFormat") ?? ""
 		mirror = defaults?.bool(forKey: "mirror") ?? true
+		digitCount = mirror ? 64 : 32
 		
 		super.init(frame: frame, isPreview: isPreview)
 		
@@ -90,13 +83,8 @@ final class SaverView: ScreenSaverView {
 	
 	required init?(coder decoder: NSCoder) {
 		defaults = UserDefaults.standard
-		showYear = defaults?.bool(forKey: "showYear") ?? true
-		showMonth = defaults?.bool(forKey: "showMonth") ?? true
-		showDay = defaults?.bool(forKey: "showDay") ?? false
-		showWeek = defaults?.bool(forKey: "showWeek") ?? false
-		showHour = defaults?.bool(forKey: "showHour") ?? true
-		showMinute = defaults?.bool(forKey: "showMinute") ?? true
-		showSecond = defaults?.bool(forKey: "showSecond") ?? true
+		dateFormatter = DateFormatter()
+		digitCount = 64
 		mirror = defaults?.bool(forKey: "mirror") ?? true
 		super.init(coder: decoder)
 	}
@@ -104,15 +92,15 @@ final class SaverView: ScreenSaverView {
 	override var hasConfigureSheet: Bool {
 		return true
 	}
-	lazy var sheetController = ConfigureSheetController()
+	
 	override var configureSheet: NSWindow? {
-
 		return sheetController.window
 	}
 	
 	override func animateOneFrame() {
 		super.animateOneFrame()
-		let currentTime = Int(Date().timeIntervalSince1970)
+		let date = Date()
+		let currentTime = Int(date.timeIntervalSince1970)
 		//Age: Int(Date().timeIntervalSince(Date(timeIntervalSinceReferenceDate: 60*60*24*365 + 60*60*24*334.5)))
 //		guard digitColorViews.count == digitCount else {
 //			// Account for potentially changing digitCount while running
@@ -130,24 +118,7 @@ final class SaverView: ScreenSaverView {
 		}
 		
 		// Show date and time in corner
-		// Closures
-		let chars = {(number: Int) in return Array(String(number))}
-		let padTT = {(number: Int) in return ((number < 10 ? ["0"] : []) + chars(number))}
-		
-		let date = Date()
-		let calendar = Calendar.current
-		let comp = {(_ component: Calendar.Component) in return calendar.component(component, from: date)}
-		var trailingText: [Character] = [" "]
-		
-		if showYear   { trailingText += chars(comp(.year))   + "."}
-		if showMonth  { trailingText += chars(comp(.month))  + "."}
-		if showDay    { trailingText += chars(comp(.day))    + "."}
-		if showWeek   { trailingText += "(" + chars(comp(.weekOfYear)) + ")" + "."}
-		if showHour   { trailingText += chars(comp(.hour))   + "."}
-		if showMinute { trailingText += padTT(comp(.minute)) + "."}
-		if showSecond { trailingText += padTT(comp(.second))}
-//		trailingText += "." + chars(comp(.nanosecond))
-//		trailingText += Array(String(configureSheet == nil))
+		let trailingText: [Character] = Array(dateFormatter.string(from: date))
 		
 		for i in 0..<trailingText.count {
 			digitColorViews[digitCount - 1 - i].character = trailingText[trailingText.count - 1 - i]
