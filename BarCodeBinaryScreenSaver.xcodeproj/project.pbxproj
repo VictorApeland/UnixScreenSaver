@@ -7,15 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FCCF10F223044BB0003BBC73 /* BarCodeBinaryScreenSaverView.h in Headers */ = {isa = PBXBuildFile; fileRef = FCCF10F123044BB0003BBC73 /* BarCodeBinaryScreenSaverView.h */; };
-		FCCF10F423044BB0003BBC73 /* BarCodeBinaryScreenSaverView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCCF10F323044BB0003BBC73 /* BarCodeBinaryScreenSaverView.m */; };
+		FC4D070A25AA6DFD00A4642A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4D070925AA6DFD00A4642A /* AppDelegate.swift */; };
+		FC4D070F25AA73E100A4642A /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4D070E25AA73E100A4642A /* Global.swift */; };
+		FCAE8C56290F7D7400831359 /* ConfigureSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAE8C55290F7D7400831359 /* ConfigureSheetController.swift */; };
+		FCCE9FCF290E02FD003C03FF /* ConfigureSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCCE9FCE290E02FC003C03FF /* ConfigureSheet.xib */; };
+		FCCF10FC23045371003BBC73 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCF10FB23045371003BBC73 /* MainView.swift */; };
+		FCCF10FE23045500003BBC73 /* DigitColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCF10FD23045500003BBC73 /* DigitColorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FC4D070925AA6DFD00A4642A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FC4D070E25AA73E100A4642A /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		FCAE8C55290F7D7400831359 /* ConfigureSheetController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigureSheetController.swift; sourceTree = "<group>"; };
+		FCCE9FCE290E02FC003C03FF /* ConfigureSheet.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfigureSheet.xib; sourceTree = "<group>"; };
 		FCCF10EE23044BB0003BBC73 /* BarCodeBinaryScreenSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BarCodeBinaryScreenSaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
-		FCCF10F123044BB0003BBC73 /* BarCodeBinaryScreenSaverView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BarCodeBinaryScreenSaverView.h; sourceTree = "<group>"; };
-		FCCF10F323044BB0003BBC73 /* BarCodeBinaryScreenSaverView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BarCodeBinaryScreenSaverView.m; sourceTree = "<group>"; };
 		FCCF10F523044BB0003BBC73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FCCF10FB23045371003BBC73 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		FCCF10FD23045500003BBC73 /* DigitColorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DigitColorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,8 +56,12 @@
 		FCCF10F023044BB0003BBC73 /* BarCodeBinaryScreenSaver */ = {
 			isa = PBXGroup;
 			children = (
-				FCCF10F123044BB0003BBC73 /* BarCodeBinaryScreenSaverView.h */,
-				FCCF10F323044BB0003BBC73 /* BarCodeBinaryScreenSaverView.m */,
+				FC4D070925AA6DFD00A4642A /* AppDelegate.swift */,
+				FC4D070E25AA73E100A4642A /* Global.swift */,
+				FCAE8C55290F7D7400831359 /* ConfigureSheetController.swift */,
+				FCCE9FCE290E02FC003C03FF /* ConfigureSheet.xib */,
+				FCCF10FB23045371003BBC73 /* MainView.swift */,
+				FCCF10FD23045500003BBC73 /* DigitColorView.swift */,
 				FCCF10F523044BB0003BBC73 /* Info.plist */,
 			);
 			path = BarCodeBinaryScreenSaver;
@@ -62,7 +74,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCCF10F223044BB0003BBC73 /* BarCodeBinaryScreenSaverView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,11 +104,12 @@
 		FCCF10E523044BB0003BBC73 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1030;
+				LastUpgradeCheck = 1400;
 				ORGANIZATIONNAME = "Victor Apeland";
 				TargetAttributes = {
 					FCCF10ED23044BB0003BBC73 = {
 						CreatedOnToolsVersion = 10.3;
+						LastSwiftMigration = 1030;
 					};
 				};
 			};
@@ -107,6 +119,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = FCCF10E423044BB0003BBC73;
 			productRefGroup = FCCF10EF23044BB0003BBC73 /* Products */;
@@ -123,6 +136,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCCE9FCF290E02FD003C03FF /* ConfigureSheet.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,7 +147,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCCF10F423044BB0003BBC73 /* BarCodeBinaryScreenSaverView.m in Sources */,
+				FC4D070A25AA6DFD00A4642A /* AppDelegate.swift in Sources */,
+				FCCF10FE23045500003BBC73 /* DigitColorView.swift in Sources */,
+				FC4D070F25AA73E100A4642A /* Global.swift in Sources */,
+				FCCF10FC23045371003BBC73 /* MainView.swift in Sources */,
+				FCAE8C56290F7D7400831359 /* ConfigureSheetController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +184,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -174,6 +193,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -225,6 +245,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -233,6 +254,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -248,19 +270,33 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
 			};
 			name = Release;
 		};
 		FCCF10F923044BB0003BBC73 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = LG9Q88RZ59;
 				INFOPLIST_FILE = BarCodeBinaryScreenSaver/Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
-				PRODUCT_BUNDLE_IDENTIFIER = com.BarCodeBinaryScreenSaver;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.4;
+				PRODUCT_BUNDLE_IDENTIFIER = com.VictorApeland.BarCodeBinary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = saver;
 			};
 			name = Debug;
@@ -268,13 +304,25 @@
 		FCCF10FA23044BB0003BBC73 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = LG9Q88RZ59;
 				INFOPLIST_FILE = BarCodeBinaryScreenSaver/Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
-				PRODUCT_BUNDLE_IDENTIFIER = com.BarCodeBinaryScreenSaver;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.4;
+				PRODUCT_BUNDLE_IDENTIFIER = com.VictorApeland.BarCodeBinary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = saver;
 			};
 			name = Release;

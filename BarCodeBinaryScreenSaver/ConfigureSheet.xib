@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21225" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21225"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="ConfigureSheetController" customModule="BarCodeBinaryScreenSaver" customModuleProvider="target">
+            <connections>
+                <outlet property="dayBox" destination="xGQ-eo-T5j" id="ufa-4w-jNK"/>
+                <outlet property="hoursBox" destination="VA3-0M-WiQ" id="0dj-Qr-7DZ"/>
+                <outlet property="minutesBox" destination="VA3-0M-WiQ" id="OqM-2e-W2y"/>
+                <outlet property="mirrorBox" destination="bD2-En-5we" id="5ab-MJ-f1W"/>
+                <outlet property="monthBox" destination="y9y-cb-60V" id="nRW-6J-Gvc"/>
+                <outlet property="secondsBox" destination="qP8-Tt-E9y" id="vli-vE-kJ4"/>
+                <outlet property="weekBox" destination="pp3-bO-LFZ" id="aZF-5t-iI6"/>
+                <outlet property="window" destination="QvC-M9-y7g" id="t14-la-H7W"/>
+                <outlet property="yearBox" destination="Gun-Ub-gAC" id="nOO-rO-nWP"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Bar Code Binary" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="QvC-M9-y7g">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="232" height="241"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
+            <view key="contentView" id="EiT-Mj-1SZ">
+                <rect key="frame" x="0.0" y="0.0" width="232" height="241"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button verticalHuggingPriority="750" id="qP8-Tt-E9y">
+                        <rect key="frame" x="18" y="204" width="114" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Show seconds" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="fBJ-if-5Ya">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
+                    <button verticalHuggingPriority="750" id="DwV-lQ-K6K">
+                        <rect key="frame" x="18" y="182" width="111" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Show minutes" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="kjZ-XD-FlO">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
+                    <button verticalHuggingPriority="750" id="VA3-0M-WiQ">
+                        <rect key="frame" x="18" y="160" width="97" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Show hours" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="b61-s2-IDl">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
+                    <button verticalHuggingPriority="750" id="xGQ-eo-T5j">
+                        <rect key="frame" x="18" y="138" width="85" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Show day" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="mgv-Gy-CXZ">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
+                    <button verticalHuggingPriority="750" id="pp3-bO-LFZ">
+                        <rect key="frame" x="18" y="116" width="95" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Show week" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="4Ly-9c-hBd">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
+                    <button verticalHuggingPriority="750" id="y9y-cb-60V">
+                        <rect key="frame" x="18" y="94" width="102" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Show month" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="bjl-br-ttG">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
+                    <button verticalHuggingPriority="750" id="Gun-Ub-gAC">
+                        <rect key="frame" x="18" y="72" width="89" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Show year" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="pg0-4V-16Z">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
+                    <button verticalHuggingPriority="750" id="bD2-En-5we">
+                        <rect key="frame" x="18" y="50" width="160" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Mirror the whole thing" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="9Qp-56-mYO">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lsB-4d-KwF">
+                        <rect key="frame" x="125" y="13" width="94" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="bI1-BY-gUk"/>
+                        </constraints>
+                        <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ygf-Qk-bkW">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="saveAndCloseSheet:" target="-2" id="qnI-M7-joO"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7Xs-fG-lKy">
+                        <rect key="frame" x="33" y="13" width="94" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="mAV-tN-oup"/>
+                        </constraints>
+                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gxr-0p-Pd2">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="cancelAndCloseSheet:" target="-2" id="4L0-la-oQE"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="lsB-4d-KwF" secondAttribute="trailing" constant="20" symbolic="YES" id="Jub-A3-YKY"/>
+                    <constraint firstAttribute="bottom" secondItem="7Xs-fG-lKy" secondAttribute="bottom" constant="20" symbolic="YES" id="V29-6U-qTL"/>
+                    <constraint firstAttribute="trailing" secondItem="lsB-4d-KwF" secondAttribute="trailing" constant="20" symbolic="YES" id="ZsY-RT-efd"/>
+                    <constraint firstAttribute="bottom" secondItem="lsB-4d-KwF" secondAttribute="bottom" constant="20" symbolic="YES" id="maA-iF-lC1"/>
+                    <constraint firstItem="lsB-4d-KwF" firstAttribute="leading" secondItem="7Xs-fG-lKy" secondAttribute="trailing" constant="12" symbolic="YES" id="pnd-TJ-XP3"/>
+                </constraints>
+            </view>
+            <point key="canvasLocation" x="436" y="527.5"/>
+        </window>
+    </objects>
+</document>

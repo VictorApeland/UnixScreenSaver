@@ -1,0 +1,12 @@
+//
+//  Global.swift
+//  BarCodeBinaryScreenSaver
+//
+//  Created by Victor Apeland on 10/01/2021.
+//  Copyright © 2021 Victor Apeland. All rights reserved.
+//
+
+import Foundation
+
+
+var leadingText = "©Victor Apeland"
