@@ -59,12 +59,7 @@ class ConfigureSheetController : NSObject {
 			}
 		}).resume()
 		
-		panel.canChooseDirectories = false
-		panel.canChooseFiles = true
-		panel.allowsMultipleSelection = false
-		panel.canDownloadUbiquitousContents = true
-		panel.canResolveUbiquitousConflicts = true
-		
+		panel.allowedFileTypes = NSImage.imageTypes
         bundle.loadNibNamed("ConfigureSheet", owner: self, topLevelObjects: nil)
     }
 

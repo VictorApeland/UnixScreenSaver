@@ -25,12 +25,12 @@ final class SaverView: ScreenSaverView {
 	
 	var digitColorViews: [DigitColorView] = []
 	
-	var pImage: NSImage = NSImage.init(size: CGSize.zero) { didSet {
+	var pImage: NSImage? { didSet {
 		for digitView in digitColorViews {
 			digitView.pView.image = pImage
 		}
 	}}
-	var nImage: NSImage = NSImage.init(size: CGSize.zero) { didSet {
+	var nImage: NSImage? { didSet {
 		for digitView in digitColorViews {
 			digitView.nView.image = nImage
 		}
@@ -44,29 +44,17 @@ final class SaverView: ScreenSaverView {
 		dateFormatter.dateFormat = defaults?.string(forKey: "dateFormat") ?? ""
 		mirror = defaults?.bool(forKey: "mirror") ?? true
 		digitCount = mirror ? 64 : 32
-		
 		super.init(frame: frame, isPreview: isPreview)
 		
-		animationTimeInterval = TimeInterval(1)
-		
 		initColorViews()
+		
+		animationTimeInterval = TimeInterval(1)
 		
 		let pImagePath = defaults?.url(forKey: "pImagePath") ?? defaultPImagePath
 		let nImagePath = defaults?.url(forKey: "nImagePath") ?? defaultNImagePath
 		
-		URLSession.shared.dataTask(with: pImagePath, completionHandler: { data, _, error in
-			guard let data = data, error == nil else { return }
-			DispatchQueue.main.async() { [weak self] in
-				self?.pImage = NSImage(data: data)!
-			}
-		}).resume()
-		
-		URLSession.shared.dataTask(with: nImagePath, completionHandler: { data, _, error in
-			guard let data = data, error == nil else { return }
-			DispatchQueue.main.async() { [weak self] in
-				self?.nImage = NSImage(data: data)!
-			}
-		}).resume()
+		defer { pImage = NSImage(contentsOf: pImagePath) }
+		defer { nImage = NSImage(contentsOf: nImagePath) }
 	}
 	
 	func initColorViews() {
@@ -100,19 +88,13 @@ final class SaverView: ScreenSaverView {
 		super.animateOneFrame()
 		let date = Date()
 		let currentTime = Int(date.timeIntervalSince1970)
-		//Age: Int(Date().timeIntervalSince(Date(timeIntervalSinceReferenceDate: 60*60*24*365 + 60*60*24*334.5)))
-//		guard digitColorViews.count == digitCount else {
-//			// Account for potentially changing digitCount while running
-//			initColorViews()
-//			return
-//		}
+		
 		for j in 0..<digitCount {
 			let i = digitCount - 1 - j
 			let digitColorView = digitColorViews[j]
 			
 			digitColorView.representation = (currentTime & (1 << i)) != 0
-			
-			// Mirror
+
 			if mirror { digitColorViews[i].representation = digitColorView.representation}
 		}
 		
