@@ -54,6 +54,7 @@ final class SaverView: ScreenSaverView {
 		pImage = NSImage(contentsOf: pImagePath)
 		nImage = NSImage(contentsOf: nImagePath)
 		
+		
 		let characters = Array(leadingText) + [Character](repeating: " ", count: digitCount - leadingText.count)
 		let width = frame.width / CGFloat(digitCount)
 		for i in 0..<digitCount {

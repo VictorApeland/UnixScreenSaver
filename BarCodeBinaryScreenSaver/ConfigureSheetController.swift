@@ -35,7 +35,6 @@ class ConfigureSheetController : NSObject {
 //		defaults = ScreenSaverDefaults.init(forModuleWithName: bundle.bundleIdentifier!)
 		defaults = UserDefaults.standard
 		
-
 		dateFormat = defaults?.string(forKey: "dateFormat") ?? ""
 		mirror = defaults?.bool(forKey: "mirror") ?? true
 		pImagePath = defaults?.url(forKey: "pImagePath") ?? defaultPImagePath

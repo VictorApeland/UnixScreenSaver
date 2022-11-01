@@ -13,7 +13,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	
 //	private var controller: OptionsController?
 	lazy var sheetController: ConfigureSheetController = ConfigureSheetController()
-
 	
 	func applicationDidFinishLaunching(_ aNotification: Notification) {
 //		screenSaverView.frame = (window.contentView?.bounds)!
@@ -38,8 +37,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	private func objectsFromNib(loadNibNamed nibName: String) -> [AnyObject] {
 		var topLevelObjects: NSArray? = NSArray()
 
-		_ =  Bundle.main.loadNibNamed(nibName, owner: sheetController,
-									  topLevelObjects: &topLevelObjects)
+		_ = Bundle.main.loadNibNamed(nibName, owner: sheetController, topLevelObjects: &topLevelObjects)
 
 		return topLevelObjects! as [AnyObject]
 	}

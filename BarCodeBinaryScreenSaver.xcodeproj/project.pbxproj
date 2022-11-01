@@ -10,6 +10,7 @@
 		FC4D070A25AA6DFD00A4642A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4D070925AA6DFD00A4642A /* AppDelegate.swift */; };
 		FC4D070F25AA73E100A4642A /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4D070E25AA73E100A4642A /* Global.swift */; };
 		FCAE8C56290F7D7400831359 /* ConfigureSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAE8C55290F7D7400831359 /* ConfigureSheetController.swift */; };
+		FCAE8C582910E87900831359 /* thumbnail.png in Resources */ = {isa = PBXBuildFile; fileRef = FCAE8C572910E87900831359 /* thumbnail.png */; };
 		FCCE9FCF290E02FD003C03FF /* ConfigureSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCCE9FCE290E02FC003C03FF /* ConfigureSheet.xib */; };
 		FCCF10FC23045371003BBC73 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCF10FB23045371003BBC73 /* MainView.swift */; };
 		FCCF10FE23045500003BBC73 /* DigitColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCF10FD23045500003BBC73 /* DigitColorView.swift */; };
@@ -19,6 +20,7 @@
 		FC4D070925AA6DFD00A4642A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC4D070E25AA73E100A4642A /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		FCAE8C55290F7D7400831359 /* ConfigureSheetController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigureSheetController.swift; sourceTree = "<group>"; };
+		FCAE8C572910E87900831359 /* thumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbnail.png; sourceTree = "<group>"; };
 		FCCE9FCE290E02FC003C03FF /* ConfigureSheet.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfigureSheet.xib; sourceTree = "<group>"; };
 		FCCF10EE23044BB0003BBC73 /* BarCodeBinaryScreenSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BarCodeBinaryScreenSaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCCF10F523044BB0003BBC73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				FCCF10FB23045371003BBC73 /* MainView.swift */,
 				FCCF10FD23045500003BBC73 /* DigitColorView.swift */,
 				FCCF10F523044BB0003BBC73 /* Info.plist */,
+				FCAE8C572910E87900831359 /* thumbnail.png */,
 			);
 			path = BarCodeBinaryScreenSaver;
 			sourceTree = "<group>";
@@ -136,6 +139,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCAE8C582910E87900831359 /* thumbnail.png in Resources */,
 				FCCE9FCF290E02FD003C03FF /* ConfigureSheet.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
