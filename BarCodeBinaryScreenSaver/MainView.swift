@@ -10,7 +10,6 @@ import AppKit
 import ScreenSaver
 import Cocoa
 
-
 // MARK: - SaverView
 final class SaverView: ScreenSaverView {
 	
@@ -25,16 +24,8 @@ final class SaverView: ScreenSaverView {
 	
 	var digitColorViews: [DigitColorView] = []
 	
-	var pImage: NSImage? { didSet {
-		for digitView in digitColorViews {
-			digitView.pView.image = pImage
-		}
-	}}
-	var nImage: NSImage? { didSet {
-		for digitView in digitColorViews {
-			digitView.nView.image = nImage
-		}
-	}}
+	var pImage: NSImage?
+	var nImage: NSImage?
 	
 	// MARK: Initialization
 	override init?(frame: NSRect, isPreview: Bool) {
@@ -46,24 +37,31 @@ final class SaverView: ScreenSaverView {
 		digitCount = mirror ? 64 : 32
 		super.init(frame: frame, isPreview: isPreview)
 		
-		initColorViews()
 		
+//		initColorViews()
+//		let date = Date()
+//		let calendar = Calendar.current
+//		let comp = {(_ component: Calendar.Component) in return calendar.component(component, from: date)}
+//		let msToFullSecond = 1000000000 - calendar.component(.nanosecond, from: date)
+//		DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+//
+//		}
 		animationTimeInterval = TimeInterval(1)
 		
 		let pImagePath = defaults?.url(forKey: "pImagePath") ?? defaultPImagePath
 		let nImagePath = defaults?.url(forKey: "nImagePath") ?? defaultNImagePath
 		
-		defer { pImage = NSImage(contentsOf: pImagePath) }
-		defer { nImage = NSImage(contentsOf: nImagePath) }
-	}
-	
-	func initColorViews() {
+		pImage = NSImage(contentsOf: pImagePath)
+		nImage = NSImage(contentsOf: nImagePath)
+		
 		let characters = Array(leadingText) + [Character](repeating: " ", count: digitCount - leadingText.count)
 		let width = frame.width / CGFloat(digitCount)
 		for i in 0..<digitCount {
 			let digitColorView = DigitColorView(index: i, representation: false, width: width, character: characters[i], superSize: frame.size)
 			digitColorViews.append(digitColorView)
 			addSubview(digitColorView)
+			digitColorView.pView.image = pImage
+			digitColorView.nView.image = nImage
 		}
 		animateOneFrame()
 	}
@@ -76,13 +74,8 @@ final class SaverView: ScreenSaverView {
 		super.init(coder: decoder)
 	}
 	
-	override var hasConfigureSheet: Bool {
-		return true
-	}
-	
-	override var configureSheet: NSWindow? {
-		return sheetController.window
-	}
+	override var hasConfigureSheet: Bool { return true }
+	override var configureSheet: NSWindow? { return sheetController.window }
 	
 	override func animateOneFrame() {
 		super.animateOneFrame()
@@ -91,16 +84,13 @@ final class SaverView: ScreenSaverView {
 		
 		for j in 0..<digitCount {
 			let i = digitCount - 1 - j
-			let digitColorView = digitColorViews[j]
-			
-			digitColorView.representation = (currentTime & (1 << i)) != 0
+			digitColorViews[j].representation = (currentTime & (1 << i)) != 0
 
-			if mirror { digitColorViews[i].representation = digitColorView.representation}
+			if mirror { digitColorViews[i].representation = digitColorViews[j].representation }
 		}
 		
 		// Show date and time in corner
 		let trailingText: [Character] = Array(dateFormatter.string(from: date))
-		
 		for i in 0..<trailingText.count {
 			digitColorViews[digitCount - 1 - i].character = trailingText[trailingText.count - 1 - i]
 		}
