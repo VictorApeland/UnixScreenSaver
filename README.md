@@ -8,7 +8,7 @@ You can choose any image you want, can have the whole thing mirrored on both sid
 Please don't use this on an OLED display or any other display where it could cause burn-in. The point of it is that some elements only change on massive timescales, which is cool but not great for saving screens.
 
 ## Installation
-Dowload and build the repository yourself, or use the included BarCodeBinaryScreenSaver.saver file. Drop this file into the system `/Library/Screen\ Savers/` folder.
+Dowload and build the repository yourself, or use the included BarCodeBinaryScreenSaver.saver file. Drop this file into the system `/Library/Screen\ Savers/` folder. You should now see the Screen Saver in System Settings. If not, restart System Settings.
 
 ## Settings
-In system settings, you can mess with the screen saver settings in the Config panel.
+In System Settings, you can mess with the screen saver settings in the Config panel.
